@@ -1,7 +1,9 @@
 //app.js
 
 App({
-    onLaunch: function () {
-        
-    }
+  onLaunch () { },
+  onShow () { },
+  onHide() { },
+  onError() { },
+  onPageNotFound() { }
 })
