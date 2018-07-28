@@ -1,0 +1,10 @@
+{
+	"client": "./client",
+	"miniprogramRoot": "./client",
+	"setting": {
+		"newFeature": true
+	},
+	"appid": "wxb4c985cee82d9cc1",
+	"projectname": "mp-tpl",
+	"condition": {}
+}
