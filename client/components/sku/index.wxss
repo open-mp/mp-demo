@@ -1,1 +1,3 @@
-/* components/sku/sku.wxss */
+.sku-container {
+  margin-top: 20px;
+}

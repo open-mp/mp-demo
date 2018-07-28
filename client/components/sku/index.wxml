@@ -1,2 +1,4 @@
 <!--components/sku/sku.wxml-->
-<text>components/sku/sku.wxml</text>
+<view class='sku-container'>
+  <text>pullDown次数: {{pullDownCount}}</text>
+</view>

@@ -6,5 +6,6 @@
 	},
 	"appid": "wxb4c985cee82d9cc1",
 	"projectname": "mp-tpl",
+	"compileType": "miniprogram",
 	"condition": {}
 }

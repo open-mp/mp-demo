@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view class="container">
   <goods id="mp-open-1" bind:inited="onInited"/>
-  <sku />
+  <sku id="mp-open-2" bind:inited="onInited"/>
 </view>

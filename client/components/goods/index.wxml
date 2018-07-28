@@ -1,2 +1,3 @@
 <!--components/goods/goods.wxml-->
-<text>components/goods/goods.wxml</text>
+<text>pullDownCount: {{pullDownCount}}</text>
+<button bindtap="fireEvent">触发事件</button>

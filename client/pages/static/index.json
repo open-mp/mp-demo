@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "goods": "/components/goods/index",
     "sku": "/components/sku/index"

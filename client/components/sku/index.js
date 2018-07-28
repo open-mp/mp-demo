@@ -1,23 +1,27 @@
 // components/sku/sku.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
-
+    id: String
   },
 
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    pullDownCount: 0
   },
+  pageUtil: null,
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
-
+    start({ pageUtil }) {
+      this.pageUtil = pageUtil;
+      pageUtil.addListener("pull-down-count",(data)=>{
+        this.setData({ pullDownCount: data});
+      });
+    }
+  },
+  attached() {
+    this.triggerEvent("inited", {
+      instance: this,
+      id: this.id,
+      pageEvent: ["pull-down-refresh"]
+    })
   }
 })
