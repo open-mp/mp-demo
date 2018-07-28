@@ -1,4 +1,4 @@
-// components/hello.js
+// components/sku/sku.js
 Component({
   /**
    * 组件的属性列表
