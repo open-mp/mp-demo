@@ -9,5 +9,14 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "小程序模板",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/static/index",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/dynamic/index",
+      "text": "日志"
+    }]
   }
 }
