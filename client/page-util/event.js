@@ -16,26 +16,18 @@ module.exports = class EventEmitter {
     eventNames() {
         let names = [];
         let events = this._events;
-        let name;
 
         if (this._eventsCount === 0) return names;
 
-        for (name in events) {
-            if (Object.prototype.hasOwnProperty.call(events, name)) {
-                names.push(name);
-            }
-        }
-
-        if (Object.getOwnPropertySymbols) {
-            return names.concat(Object.getOwnPropertySymbols(events));
+        for (let name in events) {
+            names.push(name);
         }
 
         return names;
     }
 
     listeners(event) {
-        let evt = event;
-        let handlers = this._events[evt];
+        let handlers = this._events[event];
 
         if (!handlers) return [];
         if (handlers.fn) return [handlers.fn];
@@ -49,8 +41,7 @@ module.exports = class EventEmitter {
     }
 
     listenerCount(event) {
-        var evt = event;
-        let listeners = this._events[evt];
+        let listeners = this._events[event];
 
         if (!listeners) return 0;
         if (listeners.fn) return 1;
@@ -58,13 +49,11 @@ module.exports = class EventEmitter {
     };
 
     emit(event, a1, a2, a3, a4, a5) {
-        let evt = event;
-
-        if (!this._events[evt]) {
+        if (!this._events[event]) {
             return false;
         }
 
-        let listeners = this._events[evt];
+        let listeners = this._events[event];
         let len = arguments.length;
         let args;
         let i;
@@ -87,7 +76,7 @@ module.exports = class EventEmitter {
                     return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
             }
 
-            args = new Array(len - 1)
+            args = new Array(len - 1);
             for (i = 1; i < len; i++) {
                 args[i - 1] = arguments[i];
             }
@@ -125,15 +114,6 @@ module.exports = class EventEmitter {
         return true;
     }
 
-    /**
-     * Add a listener for a given event.
-     *
-     * @param {(String|Symbol)} event The event name.
-     * @param {Function} fn The listener function.
-     * @param {*} [context=this] The context to invoke the listener with.
-     * @returns {EventEmitter} `this`.
-     * @public
-     */
     on(event, fn, context) {
         return this.addListener(event, fn, context, false);
     }
@@ -148,20 +128,19 @@ module.exports = class EventEmitter {
         }
 
         let listener = new EE(fn, context || this, once);
-        let evt = event;
 
-        if (!this._events[evt]) { // 还没有注册
+        if (!this._events[event]) { // 还没有注册
 
-            this._events[evt] = listener;
+            this._events[event] = listener;
             this._eventsCount++;
 
-        } else if (!this._events[evt].fn) {// 有监听列表
+        } else if (!this._events[event].fn) {// 有监听列表
 
-            this._events[evt].push(listener);
+            this._events[event].push(listener);
 
         } else { // 存在一个监听
 
-            this._events[evt] = [this._events[evt], listener];
+            this._events[event] = [this._events[event], listener];
         }
 
         return this;
@@ -169,18 +148,16 @@ module.exports = class EventEmitter {
 
 
     removeListener(event, fn, context, once) {
-        let evt = event;
-
-        if (!this._events[evt]) {
+        if (!this._events[event]) {
             return this;
         }
 
         if (!fn) {
-            this.clearEvent(evt);
+            this.clearEvent(event);
             return this;
         }
 
-        let listeners = this._events[evt];
+        let listeners = this._events[event];
 
         if (listeners.fn) {
             if (
@@ -188,7 +165,7 @@ module.exports = class EventEmitter {
                 (!once || listeners.once) &&
                 (!context || listeners.context === context)
             ) {
-                this.clearEvent(evt);
+                this.clearEvent(event);
             }
         } else {
             let events = [];
@@ -204,9 +181,9 @@ module.exports = class EventEmitter {
             }
 
             if (events.length) {
-                this._events[evt] = events.length === 1 ? events[0] : events;
+                this._events[event] = events.length === 1 ? events[0] : events;
             } else {
-                this.clearEvent(evt);
+                this.clearEvent(event);
             }
         }
 
@@ -218,12 +195,10 @@ module.exports = class EventEmitter {
     }
 
     removeAllListeners(event) {
-        let evt;
 
         if (event) {
-            evt = event;
-            if (this._events[evt]) {
-                this.clearEvent(evt);
+            if (this._events[event]) {
+                this.clearEvent(event);
             }
         } else {
             this._events = {};
