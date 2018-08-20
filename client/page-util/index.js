@@ -10,4 +10,11 @@ module.exports = class PageUtil extends EventEmitter {
         super();
     }
 
-}
+    componentInited(initData) {
+        let {id, component, services, pageLifecycleCallbacks, pageEventCallbacks} = initData;
+    }
+
+    removeComponent(id) {
+
+    }
+};
