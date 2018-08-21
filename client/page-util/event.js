@@ -1,5 +1,6 @@
 class EE {
-    constructor(fn, context, once) {
+    constructor(name, fn, context, once) {
+        this.name = name;
         this.fn = fn;
         this.context = context;
         this.once = once || false;
@@ -11,6 +12,7 @@ module.exports = class EventEmitter {
     constructor() {
         this._events = {};
         this._eventsCount = 0;
+        this.idEventsMap = {};
     }
 
     eventNames() {
@@ -114,20 +116,27 @@ module.exports = class EventEmitter {
         return true;
     }
 
-    on(event, fn, context) {
-        return this.addListener(event, fn, context, false);
+    on(id, event, fn) {
+        return this.addListener(event, fn, this, false);
     }
 
-    once(event, fn, context) {
-        return this.addListener(event, fn, context, true);
+    once(id, event, fn) {
+        return this.addListener(event, fn, this, true);
     }
 
-    addListener(event, fn, context, once) {
+    addListener(id, event, fn, context, once) {
+
+
         if (typeof fn !== 'function') {
             throw new TypeError('The listener must be a function');
         }
 
-        let listener = new EE(fn, context || this, once);
+        let componentEvents = this.idEventsMap[id] || [];
+
+        let listener = new EE(event, fn, context || this, once);
+
+        componentEvents.push(listener);
+        this.idEventsMap[id] = componentEvents;
 
         if (!this._events[event]) { // 还没有注册
 
@@ -203,6 +212,14 @@ module.exports = class EventEmitter {
         } else {
             this._events = {};
             this._eventsCount = 0;
+        }
+        return this;
+    }
+
+    removeListenersById(id) {
+        let events = this.idEventsMap[id] || [];
+        for (let event of events) {
+            this.off(event.name, event.fn, event.context, event.once);
         }
         return this;
     }

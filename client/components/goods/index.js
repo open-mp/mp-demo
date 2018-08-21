@@ -29,7 +29,7 @@ Component({
         this.triggerEvent("inited", {
             instance: this,
             id: this.id,
-            interfaces: ['goods'], // 组件实现的接口 其他组件可以通过接口名查询实现组件的接口
+            services: ['goods'], // 组件实现的接口 其他组件可以通过接口名查询实现组件的接口
             pageEvent: ["pull-down-refresh"]
         })
     },
