@@ -9,6 +9,8 @@ module.exports = class PageUtil extends EventEmitter {
     constructor() {
         super();
         this.componentList = [];
+        this.methodCache = {};
+        this.serviceCache = {};
     }
 
     componentInited(initData) {
@@ -25,23 +27,31 @@ module.exports = class PageUtil extends EventEmitter {
         })
     }
 
-    getServiceImplList(name) {
+    getServiceImplList(serviceName) {
+        if (this.serviceCache[name]) {
+            return this.serviceCache[serviceName];
+        }
         let list = [];
         for (let component of this.componentList) {
-            if (component.services.indexOf(name) > -1) {
+            if (component.services.indexOf(serviceName) > -1) {
                 list.push(component.instance);
             }
         }
+        this.serviceCache[serviceName] = list;
         return list;
     }
 
     getComponentsHasMethod(methodName) {
+        if (this.methodCache[name]) {
+            return this.methodCache[methodName];
+        }
         let list = [];
         for (let component of this.componentList) {
             if (component.instance[methodName]) {
                 list.push(component.instance);
             }
         }
+        this.methodCache[methodName] = list;
         return list;
     }
 };
