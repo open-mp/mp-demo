@@ -45,6 +45,8 @@ Component({
     },
     moved() {
     },
+
     detached() {
+        this.pageUtil.removeComponent(this.id);
     },
-})
+});

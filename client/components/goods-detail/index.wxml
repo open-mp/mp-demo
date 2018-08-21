@@ -3,9 +3,9 @@
  <text>商品图片</text>
 </view>
 <view class="count-wrapper">
-    <button bindtap="add" class="count-btn">增加</button>
-    <text class="count">数目: {{count}}</text>
     <button bindtap="decrease" class="count-btn">减少</button>
+    <text class="count">数目: {{count}}</text>
+    <button bindtap="add" class="count-btn">增加</button>
 </view>
 
 <button bindtap="fireEvent"  class="event-btn">发送商品详情事件</button>

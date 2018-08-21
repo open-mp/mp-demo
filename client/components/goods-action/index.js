@@ -30,5 +30,8 @@ Component({
             id: this.id,
             pageEvent: ["pull-down-refresh"]
         })
-    }
-})
+    },
+    detached() {
+        this.pageUtil.removeComponent(this.id);
+    },
+});
