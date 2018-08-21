@@ -1,7 +1,7 @@
 {
   "enablePullDownRefresh": true,
   "usingComponents": {
-    "goods": "/components/goods/index",
-    "sku": "/components/sku/index"
+    "goods-detail": "/components/goods-detail/index",
+    "goods-action": "/components/goods-action/index"
   }
 }

@@ -12,11 +12,11 @@
   },
   "tabBar": {
     "list": [{
-      "pagePath": "pages/static/index",
-      "text": "首页"
-    }, {
       "pagePath": "pages/dynamic/index",
-      "text": "日志"
+      "text": "国庆活动"
+    },{
+      "pagePath": "pages/static/index",
+      "text": "爆品"
     }]
   }
 }
