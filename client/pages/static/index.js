@@ -39,10 +39,7 @@ Page({
     },
     onPullDownRefresh() {
         let pageUtil = this.getPageUtil();
-        let componentList = pageUtil.getComponentsHasMethod("onPullDownRefresh");
-        for (let component of componentList) {
-            component['onPullDownRefresh'] && component['onPullDownRefresh']();
-        }
+        pageUtil.callComponentMethod("onPullDownRefresh");
     },
     onReachBottom() {
     },

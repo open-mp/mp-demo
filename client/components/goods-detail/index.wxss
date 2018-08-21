@@ -1,1 +1,21 @@
 /* components/goods/goods.wxss */
+.goods-img {
+    width: 100%;
+    height: 300rpx;
+    text-align: center;
+    padding-top: 150rpx;
+}
+.count-wrapper {
+    display: flex;
+    width: 100%;
+}
+.count-btn {
+    width: 200rpx;
+}
+.count {
+    flex-grow: 1;
+    text-align: center;
+}
+.event-btn {
+    margin-top: 100rpx;
+}

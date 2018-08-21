@@ -1,3 +1,20 @@
-.sku-container {
-  margin-top: 20px;
+.goods-action-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 80rpx;
+    padding: 10rpx;
+    border-top: #F6F6F6 2px solid;
+}
+.message {
+    flex-grow: 1;
+    line-height: 80rpx;
+}
+.btn {
+    width: 200rpx;
+    line-height: 80rpx;
+    color: white;
+    background-color: red;
 }

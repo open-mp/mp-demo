@@ -57,4 +57,11 @@ module.exports = class PageUtil extends EventEmitter {
         this.methodCache[methodName] = list;
         return list;
     }
+
+    callComponentMethod(methodName) {
+        let componentList = this.getComponentsHasMethod(methodName);
+        for (let component of componentList) {
+            component[methodName]();
+        }
+    }
 };

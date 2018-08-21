@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  <goods-detail id="mp-open-1" bind:inited="onInited"/>
-  <goods-action id="mp-open-2" bind:inited="onInited"/>
+  <goods-detail class="component" id="mp-open-1" bind:inited="onInited"/>
+  <goods-action class="component" id="mp-open-2" bind:inited="onInited"/>
 </view>

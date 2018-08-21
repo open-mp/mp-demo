@@ -1,5 +1,5 @@
 <!--components/sku/sku.wxml-->
-<view class='sku-container'>
-  <text>用户选择的数量: {{count}}</text>
-  <button bindtap="pullGoodsDetail">下单</button>
+<view class='goods-action-container'>
+  <text class="message">用户选择的数量: {{count}}</text>
+  <button class="btn" bindtap="pullGoodsDetail">下单</button>
 </view>
