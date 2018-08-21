@@ -6,7 +6,8 @@
     display: flex;
     height: 80rpx;
     padding: 10rpx;
-    border-top: #F6F6F6 2px solid;
+    border-top: #efefef 2px solid;
+    background-color: #F6F6F6;
 }
 .message {
     flex-grow: 1;

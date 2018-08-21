@@ -1,0 +1,4 @@
+<!--components/sku/sku.wxml-->
+ <view class="line-wrapper">
+    <view class="line"></view>
+ </view>

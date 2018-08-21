@@ -1,0 +1,8 @@
+.line-wrapper {
+    height: 41rpx;
+    padding-top: 20rpx;
+}
+.line {
+    border-top: brown solid 1rpx;
+    height: 0;
+}

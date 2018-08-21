@@ -1,0 +1,4 @@
+.image-ad {
+    padding: 10rpx;
+    background-color: aqua;
+}

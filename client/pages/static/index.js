@@ -1,21 +1,25 @@
 const PageUtil = require("../../page-util/index.js")
 // 记录生命周期事件要通知的组件
-let pageEventNotice = {
-    "pull-down-refresh": []
-}
-// 记录组件的id，及其对应的实例。静态页中的组件固定，小程序编辑器为组件分配id。
-let idComponentMap = {};
+
 Page({
-    data: {},
+    data: {
+        richText:  {
+            color: '#f9f9f9',
+            content: '<div class="div_class" style="line-height: 60px; color: red;">Hello&nbsp;World!</div>',
+            fullscreen: 0,
+        },
+        imageAd: {
+            size: 1,
+            images: ['imageurl'],
+        },
+        whitespace: {
+            height: 200,
+        }
+    },
     pageUtil: null,
     onInited(event) {
-        let {instance, id, pageEvent} = event.detail;
-        idComponentMap[id] = instance;
-        if (pageEvent instanceof Array) {
-            pageEvent.forEach(eventName => {
-                pageEventNotice[eventName].push(id);
-            })
-        }
+        let {instance} = event.detail;
+
         let pageUtil = this.getPageUtil(event.detail);
         pageUtil.registerComponent(event.detail);
         instance.start({pageUtil})

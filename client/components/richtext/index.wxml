@@ -1,0 +1,2 @@
+<!--components/sku/sku.wxml-->
+ <rich-text nodes="{{configData.content}}"></rich-text>
