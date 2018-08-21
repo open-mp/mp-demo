@@ -1,3 +1,5 @@
 <!--components/goods/goods.wxml-->
 <text>购买数目: {{count}}</text>
+<button bindtap="add">增加</button>
+<button bindtap="decrease">减少</button>
 <button bindtap="fireEvent">发送商品详情事件</button>

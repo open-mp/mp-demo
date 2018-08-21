@@ -26,6 +26,12 @@ Component({
             return {
                 count: this.data.count
             }
+        },
+        decrease() {
+            this.setData({count: --this.data.count});
+        },
+        add() {
+            this.setData({count: ++this.data.count});
         }
     },
     created() {
