@@ -16,7 +16,8 @@ Page({
                 pageEventNotice[eventName].push(id);
             })
         }
-        let pageUtil = this.getPageUtil();
+        let pageUtil = this.getPageUtil(event.detail);
+        pageUtil.registerComponent(event.detail);
         instance.start({pageUtil})
     },
     getPageUtil() {
@@ -37,9 +38,11 @@ Page({
     onUnload() {
     },
     onPullDownRefresh() {
-        pageEventNotice['pull-down-refresh'].forEach(id => {
-            idComponentMap[id].onPullDownRefresh && idComponentMap[id].onPullDownRefresh();
-        })
+        let pageUtil = this.getPageUtil();
+        let componentList = pageUtil.getComponentsHasMethod("onPullDownRefresh");
+        for (let component of componentList) {
+            component['onPullDownRefresh'] && component['onPullDownRefresh']();
+        }
     },
     onReachBottom() {
     },

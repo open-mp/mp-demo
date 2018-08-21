@@ -5,7 +5,7 @@ Component({
     },
 
     data: {
-        pullDownCount: 0
+        count: 0
     },
     pageUtil: null,
     methods: {
@@ -16,11 +16,16 @@ Component({
             console.log(data)
         },
         onPullDownRefresh() {
-            this.setData({pullDownCount: ++this.data.pullDownCount});
+            this.setData({count: ++this.data.count});
             wx.stopPullDownRefresh();
         },
         fireEvent() {
-            this.pageUtil.emit('pull-down-count', this.data.pullDownCount);
+            this.pageUtil.emit('pull-down-count', this.data.count);
+        },
+        getGoodsDetail() {
+            return {
+                count: this.data.count
+            }
         }
     },
     created() {
@@ -29,8 +34,7 @@ Component({
         this.triggerEvent("inited", {
             instance: this,
             id: this.id,
-            services: ['goods'], // 组件实现的接口 其他组件可以通过接口名查询实现组件的接口
-            pageEvent: ["pull-down-refresh"]
+            services: ['goods-detail'], // 组件实现的接口 其他组件可以通过接口名查询实现组件的接口
         })
     },
     moved() {

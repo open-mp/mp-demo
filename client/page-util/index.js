@@ -13,27 +13,30 @@ module.exports = class PageUtil extends EventEmitter {
         this.serviceCache = {};
     }
 
-    componentInited(initData) {
+    registerComponent(initData) {
         let {id, instance, services} = initData;
+        this.methodCache = {};
+        this.serviceCache = {};
         this.componentList.push(initData);
     }
 
     removeComponent(id) {
         // 清理组件注册的监听器
         this.removeListenersById(id);
-
+        this.methodCache = {};
+        this.serviceCache = {};
         this.componentList = this.componentList.filter(component => {
             return component.id != id;
         })
     }
 
     getServiceImplList(serviceName) {
-        if (this.serviceCache[name]) {
+        if (this.serviceCache[serviceName]) {
             return this.serviceCache[serviceName];
         }
         let list = [];
         for (let component of this.componentList) {
-            if (component.services.indexOf(serviceName) > -1) {
+            if (component.services && component.services.indexOf(serviceName) > -1) {
                 list.push(component.instance);
             }
         }
@@ -42,7 +45,7 @@ module.exports = class PageUtil extends EventEmitter {
     }
 
     getComponentsHasMethod(methodName) {
-        if (this.methodCache[name]) {
+        if (this.methodCache[methodName]) {
             return this.methodCache[methodName];
         }
         let list = [];
