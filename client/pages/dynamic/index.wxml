@@ -1,2 +1,15 @@
 <!--pages/dynamic/index.wxml-->
-<text>pages/dynamic/index.wxml</text>
+<view class="container">
+<block wx:for="{{instanceList}}" wx:for-index="idx" wx:for-item="instance">
+    <goods-detail wx:if="{{instance.id == 'goods-detail'}}"
+        id="{{instance.id+ '_'+idx}}"
+        bind:inited="onInited"
+        class="component"
+        config-data="{{instance}}" />
+    <richtext wx:if="{{instance.id == 'richtext'}}"
+            id="{{instance.id+ '_'+idx}}"
+            bind:inited="onInited"
+            class="component"
+            config-data="{{instance}}" />
+</block>
+</view>
